@@ -17,7 +17,7 @@ var (
 func init() {
 	logConfig := zap.Config{
 		OutputPaths: []string{getOutputLogs()},
-		Level: zap.NewAtomicLevelAt(getLevelLogs()),
+		Level: zap.NewAtomicLevelAt(getLogsLevel()),
 		Encoding: "json",
 		EncoderConfig:  zapcore.EncoderConfig{
 			LevelKey: "level",
@@ -53,7 +53,7 @@ func getOutputLogs() string {
 	return output
 }
 
-func getLevelLogs() zapcore.Level {
+func getLogsLevel() zapcore.Level {
 
 	switch strings.ToLower(strings.TrimSpace(os.Getenv("LOG_LEVEL"))) {
 	case "info":
